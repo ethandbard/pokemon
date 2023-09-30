@@ -7475,37 +7475,14 @@ a.anchor-link {
 </style>
 <!-- End of mermaid configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
-<main><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pokebase</span> <span class="k">as</span> <span class="nn">pb</span>
-<span class="kn">import</span> <span class="nn">requests</span> <span class="k">as</span> <span class="nn">req</span>
-<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
-<span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">BytesIO</span>
-
-<span class="c1"># View Pokemon from this generation number.</span>
-<span class="n">GENERATION</span> <span class="o">=</span> <span class="mi">1</span>
-
-<span class="c1"># Get API data associated with that particular generation.</span>
-<span class="n">gen_resource</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">generation</span><span class="p">(</span><span class="n">GENERATION</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
+<main>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><img alt="bulbasaur" src="bulbasaur.png"/> <img alt="squirtle" src="squirtle.png"/> <img alt="charmander" src="charmander.png"/></p>
+<h1 id="Pokemon-API">Pokemon API<a class="anchor-link" href="#Pokemon-API">¶</a></h1><p><img alt="bulbasaur" src="assets/bulbasaur.png"/> <img alt="squirtle" src="assets/squirtle.png"/> <img alt="charmander" src="assets/charmander.png"/></p>
 </div>
 </div>
 </div>
@@ -7517,112 +7494,13 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># make list of all pokemon data</span>
-<span class="n">pokemon_list</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">pokemon</span> <span class="ow">in</span> <span class="n">gen_resource</span><span class="o">.</span><span class="n">pokemon_species</span><span class="p">:</span>
-    <span class="n">pokemon_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pokemon</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">pokemon_list</span>
-
-<span class="c1"># convert to pandas dataframe</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pokebase</span> <span class="k">as</span> <span class="nn">pb</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="n">pokemon_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pokemon_list</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'Pokemon'</span><span class="p">])</span>
-
-<span class="n">pokemon_df</span>
+<span class="kn">import</span> <span class="nn">requests</span> <span class="k">as</span> <span class="nn">req</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span> <span class="k">as</span> <span class="n">PILImage</span>
+<span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">BytesIO</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">Audio</span><span class="p">,</span> <span class="n">display</span>
 </pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[ ]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>Pokemon</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>0</th>
-<td>bulbasaur</td>
-</tr>
-<tr>
-<th>1</th>
-<td>charmander</td>
-</tr>
-<tr>
-<th>2</th>
-<td>squirtle</td>
-</tr>
-<tr>
-<th>3</th>
-<td>caterpie</td>
-</tr>
-<tr>
-<th>4</th>
-<td>weedle</td>
-</tr>
-<tr>
-<th>...</th>
-<td>...</td>
-</tr>
-<tr>
-<th>146</th>
-<td>dragonair</td>
-</tr>
-<tr>
-<th>147</th>
-<td>dragonite</td>
-</tr>
-<tr>
-<th>148</th>
-<td>mew</td>
-</tr>
-<tr>
-<th>149</th>
-<td>ivysaur</td>
-</tr>
-<tr>
-<th>150</th>
-<td>golem</td>
-</tr>
-</tbody>
-</table>
-<p>151 rows × 1 columns</p>
-</div>
 </div>
 </div>
 </div>
@@ -7636,6 +7514,7 @@ a.anchor-link {
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># get pokemon data</span>
+<span class="c1"># my favorite pokemon</span>
 <span class="n">larvitar</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">pokemon</span><span class="p">(</span><span class="s1">'larvitar'</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -7650,39 +7529,10 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">ability</span> <span class="ow">in</span> <span class="n">larvitar</span><span class="o">.</span><span class="n">abilities</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">ability</span><span class="o">.</span><span class="n">ability</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>guts
-sand-veil
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">larvitar</span><span class="o">.</span><span class="n">sprites</span><span class="o">.</span><span class="n">front_default</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># show sprite image</span>
+<span class="c1"># larvitar.sprites.front_default</span>
+<span class="c1"># larvitar.sprites.front_shiny</span>
 
-<span class="c1"># show image of pokemon</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
 <span class="n">Image</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">larvitar</span><span class="o">.</span><span class="n">sprites</span><span class="o">.</span><span class="n">front_default</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -7701,32 +7551,6 @@ sand-veil
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">larvitar</span><span class="o">.</span><span class="n">sprites</span><span class="o">.</span><span class="n">front_shiny</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[ ]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
-<img alt="No description has been provided for this image" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/246.png"/>
-</div>
-</div>
-</div>
-</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -7736,14 +7560,40 @@ sand-veil
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># save image to file</span>
-<span class="kn">import</span> <span class="nn">requests</span> <span class="k">as</span> <span class="nn">req</span>
-<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
-<span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">BytesIO</span>
-
 <span class="n">response</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">larvitar</span><span class="o">.</span><span class="n">sprites</span><span class="o">.</span><span class="n">front_default</span><span class="p">)</span>
-<span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">))</span>
-<span class="n">img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">'larvitar.png'</span><span class="p">)</span>
+<span class="n">png</span> <span class="o">=</span> <span class="n">PILImage</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">))</span>
+<span class="n">png</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">'larvitar.png'</span><span class="p">)</span>
 </pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># pokemon abilities</span>
+<span class="k">for</span> <span class="n">ability</span> <span class="ow">in</span> <span class="n">larvitar</span><span class="o">.</span><span class="n">abilities</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">ability</span><span class="o">.</span><span class="n">ability</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>guts
+sand-veil
+</pre>
 </div>
 </div>
 </div>
@@ -7786,9 +7636,10 @@ ground
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># evolves to</span>
-<span class="n">evolves_to</span> <span class="o">=</span> <span class="n">larvitar</span><span class="o">.</span><span class="n">species</span><span class="o">.</span><span class="n">evolution_chain</span><span class="o">.</span><span class="n">chain</span><span class="o">.</span><span class="n">evolves_to</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">species</span><span class="o">.</span><span class="n">name</span>
-<span class="n">evolves_to</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># flavor text</span>
+<span class="k">for</span> <span class="n">flavor_text</span> <span class="ow">in</span> <span class="n">larvitar</span><span class="o">.</span><span class="n">species</span><span class="o">.</span><span class="n">flavor_text_entries</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">flavor_text</span><span class="o">.</span><span class="n">language</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">'en'</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">flavor_text</span><span class="o">.</span><span class="n">flavor_text</span><span class="p">,</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -7798,10 +7649,47 @@ ground
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[ ]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>'pupitar'</pre>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>It feeds on soil.
+After it has eaten
+a large mountain,it will fall
+asleep so it can
+grow. 
+
+It is born deep
+underground. It
+can't emerge untilit has entirely
+consumed the soil
+around it. 
+
+Born deep under­
+ground, this
+POKéMON becomes apupa after eating
+enough dirt to
+make a mountain. 
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># View Pokemon from this generation number.</span>
+<span class="c1"># 1 - 9</span>
+<span class="n">GENERATION</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1"># Get API data associated with that particular generation.</span>
+<span class="n">gen_resource</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">generation</span><span class="p">(</span><span class="n">GENERATION</span><span class="p">)</span>
+</pre></div>
 </div>
 </div>
 </div>
@@ -7814,110 +7702,67 @@ ground
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">evolves_to_sprite</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">pokemon</span><span class="p">(</span><span class="n">evolves_to</span><span class="p">)</span><span class="o">.</span><span class="n">sprites</span><span class="o">.</span><span class="n">front_default</span>
-<span class="n">Image</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">evolves_to_sprite</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[ ]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
-<img alt="No description has been provided for this image" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/247.png"/>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">larvitar</span><span class="o">.</span><span class="n">species</span><span class="o">.</span><span class="n">evolution_chain</span><span class="o">.</span><span class="n">chain</span><span class="o">.</span><span class="n">evolves_to</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">species</span><span class="o">.</span><span class="n">name</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[ ]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>'pupitar'</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[ ]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>'http://pokeapi.co/api/v2/pokemon-species/1/'</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">pokemon</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">generation</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">color</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">shape</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">evolves_to</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">sprites</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">pokemon_data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">'Pokemon'</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s1">'Generation'</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s1">'Color'</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s1">'Shape'</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s1">'Evolves To'</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s1">'Height'</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s1">'Weight'</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s1">'Sprites'</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s1">'Type 1'</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s1">'Type 2'</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s1">'HP'</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s1">'Attack'</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s1">'Defense'</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s1">'Special Attack'</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s1">'Special Defense'</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s1">'Speed'</span><span class="p">:</span> <span class="p">[]</span>
+<span class="p">}</span>
 
 <span class="k">for</span> <span class="n">poke</span> <span class="ow">in</span> <span class="n">gen_resource</span><span class="o">.</span><span class="n">pokemon_species</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">8</span><span class="p">]:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">'getting data for'</span><span class="p">,</span> <span class="n">poke</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
     
-    <span class="n">pokemon</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">poke</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-    <span class="n">generation</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">poke</span><span class="o">.</span><span class="n">generation</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-    <span class="n">color</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">poke</span><span class="o">.</span><span class="n">color</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-    <span class="n">shape</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">poke</span><span class="o">.</span><span class="n">shape</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="n">pokemon_data</span><span class="p">[</span><span class="s1">'Pokemon'</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">poke</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="n">pokemon_data</span><span class="p">[</span><span class="s1">'Generation'</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">poke</span><span class="o">.</span><span class="n">generation</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="n">pokemon_data</span><span class="p">[</span><span class="s1">'Color'</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">poke</span><span class="o">.</span><span class="n">color</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="n">pokemon_data</span><span class="p">[</span><span class="s1">'Shape'</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">poke</span><span class="o">.</span><span class="n">shape</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+    
     
     <span class="c1"># get next evolution if exists</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">poke</span><span class="o">.</span><span class="n">evolution_chain</span><span class="o">.</span><span class="n">chain</span><span class="o">.</span><span class="n">evolves_to</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">evolves_to</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'None'</span><span class="p">)</span>
+        <span class="n">pokemon_data</span><span class="p">[</span><span class="s1">'Evolves To'</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'None'</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">evolves_to</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">poke</span><span class="o">.</span><span class="n">evolution_chain</span><span class="o">.</span><span class="n">chain</span><span class="o">.</span><span class="n">evolves_to</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">species</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="n">pokemon_data</span><span class="p">[</span><span class="s1">'Evolves To'</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">poke</span><span class="o">.</span><span class="n">evolution_chain</span><span class="o">.</span><span class="n">chain</span><span class="o">.</span><span class="n">evolves_to</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">species</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
     
     <span class="c1"># get pokemon data </span>
     <span class="n">this_poke</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">pokemon</span><span class="p">(</span><span class="n">poke</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
     
-    <span class="n">sprites</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">this_poke</span><span class="o">.</span><span class="n">sprites</span><span class="o">.</span><span class="n">front_default</span><span class="p">)</span>
+    <span class="c1"># get height and weight</span>
+    <span class="n">pokemon_data</span><span class="p">[</span><span class="s1">'Height'</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">this_poke</span><span class="o">.</span><span class="n">height</span><span class="p">)</span>
+    <span class="n">pokemon_data</span><span class="p">[</span><span class="s1">'Weight'</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">this_poke</span><span class="o">.</span><span class="n">weight</span><span class="p">)</span>
+    
+    <span class="c1"># get types</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">this_poke</span><span class="o">.</span><span class="n">types</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">pokemon_data</span><span class="p">[</span><span class="s1">'Type 1'</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">this_poke</span><span class="o">.</span><span class="n">types</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">type</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="n">pokemon_data</span><span class="p">[</span><span class="s1">'Type 2'</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'None'</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">pokemon_data</span><span class="p">[</span><span class="s1">'Type 1'</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">this_poke</span><span class="o">.</span><span class="n">types</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">type</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="n">pokemon_data</span><span class="p">[</span><span class="s1">'Type 2'</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">this_poke</span><span class="o">.</span><span class="n">types</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">type</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    
+    <span class="c1"># get sprite</span>
+    <span class="n">pokemon_data</span><span class="p">[</span><span class="s1">'Sprites'</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">this_poke</span><span class="o">.</span><span class="n">sprites</span><span class="o">.</span><span class="n">front_default</span><span class="p">)</span>
+    
+    <span class="c1"># get stats</span>
+    <span class="n">pokemon_data</span><span class="p">[</span><span class="s1">'HP'</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">this_poke</span><span class="o">.</span><span class="n">stats</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">base_stat</span><span class="p">)</span>
+    <span class="n">pokemon_data</span><span class="p">[</span><span class="s1">'Attack'</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">this_poke</span><span class="o">.</span><span class="n">stats</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">base_stat</span><span class="p">)</span>
+    <span class="n">pokemon_data</span><span class="p">[</span><span class="s1">'Defense'</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">this_poke</span><span class="o">.</span><span class="n">stats</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">base_stat</span><span class="p">)</span>
+    <span class="n">pokemon_data</span><span class="p">[</span><span class="s1">'Special Attack'</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">this_poke</span><span class="o">.</span><span class="n">stats</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">base_stat</span><span class="p">)</span>
+    <span class="n">pokemon_data</span><span class="p">[</span><span class="s1">'Special Defense'</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">this_poke</span><span class="o">.</span><span class="n">stats</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">base_stat</span><span class="p">)</span>
+    <span class="n">pokemon_data</span><span class="p">[</span><span class="s1">'Speed'</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">this_poke</span><span class="o">.</span><span class="n">stats</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">base_stat</span><span class="p">)</span>
+    
     
     <span class="nb">print</span><span class="p">(</span><span class="s1">'got data for'</span><span class="p">,</span> <span class="n">poke</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
 </pre></div>
@@ -7933,22 +7778,127 @@ ground
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>getting data for bulbasaur
-got data for bulbasaur
+got data for bulbasaur 
+
 getting data for charmander
-got data for charmander
+got data for charmander 
+
 getting data for squirtle
-got data for squirtle
+got data for squirtle 
+
 getting data for caterpie
-got data for caterpie
+got data for caterpie 
+
 getting data for weedle
-got data for weedle
+got data for weedle 
+
 getting data for pidgey
-got data for pidgey
+got data for pidgey 
+
 getting data for rattata
-got data for rattata
+got data for rattata 
+
 getting data for spearow
-got data for spearow
+got data for spearow 
+
 </pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">pokemon_data</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[ ]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>{'Pokemon': ['bulbasaur',
+  'charmander',
+  'squirtle',
+  'caterpie',
+  'weedle',
+  'pidgey',
+  'rattata',
+  'spearow'],
+ 'Generation': ['generation-i',
+  'generation-i',
+  'generation-i',
+  'generation-i',
+  'generation-i',
+  'generation-i',
+  'generation-i',
+  'generation-i'],
+ 'Color': ['green',
+  'red',
+  'blue',
+  'green',
+  'brown',
+  'brown',
+  'purple',
+  'brown'],
+ 'Shape': ['quadruped',
+  'upright',
+  'upright',
+  'armor',
+  'armor',
+  'wings',
+  'quadruped',
+  'wings'],
+ 'Evolves To': ['ivysaur',
+  'charmeleon',
+  'wartortle',
+  'metapod',
+  'kakuna',
+  'pidgeotto',
+  'raticate',
+  'fearow'],
+ 'Height': [7, 6, 5, 3, 3, 3, 3, 3],
+ 'Weight': [69, 85, 90, 29, 32, 18, 35, 20],
+ 'Sprites': ['https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png',
+  'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png',
+  'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png',
+  'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10.png',
+  'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/13.png',
+  'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/16.png',
+  'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/19.png',
+  'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/21.png'],
+ 'Type 1': ['grass',
+  'fire',
+  'water',
+  'bug',
+  'bug',
+  'normal',
+  'normal',
+  'normal'],
+ 'Type 2': ['poison',
+  'None',
+  'None',
+  'None',
+  'poison',
+  'flying',
+  'None',
+  'flying'],
+ 'HP': [45, 39, 44, 45, 40, 40, 30, 40],
+ 'Attack': [49, 52, 48, 30, 35, 45, 56, 60],
+ 'Defense': [49, 43, 65, 35, 30, 40, 35, 30],
+ 'Special Attack': [65, 60, 50, 20, 20, 35, 25, 31],
+ 'Special Defense': [65, 50, 64, 20, 20, 35, 35, 31],
+ 'Speed': [45, 65, 43, 45, 50, 56, 72, 70]}</pre>
 </div>
 </div>
 </div>
@@ -7961,13 +7911,26 @@ got data for spearow
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># make dataframe from pokemon, gender_rate, and is_legendary</span>
-<span class="n">pokemon_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">'pokemon'</span><span class="p">:</span> <span class="n">pokemon</span><span class="p">,</span> 
-                           <span class="s1">'generation'</span><span class="p">:</span> <span class="n">generation</span><span class="p">,</span> 
-                           <span class="s1">'color'</span><span class="p">:</span> <span class="n">color</span><span class="p">,</span> 
-                           <span class="s1">'shape'</span><span class="p">:</span> <span class="n">shape</span><span class="p">,</span> 
-                           <span class="s1">'evolves_to'</span><span class="p">:</span> <span class="n">evolves_to</span><span class="p">,</span>
-                           <span class="s1">'sprites'</span><span class="p">:</span> <span class="n">sprites</span><span class="p">})</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># save each image to assets folder</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">sprite</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">pokemon_data</span><span class="p">[</span><span class="s1">'Sprites'</span><span class="p">]):</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">sprite</span><span class="p">)</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">PILImage</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">))</span>
+    <span class="n">img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">'assets/'</span> <span class="o">+</span> <span class="n">pokemon_data</span><span class="p">[</span><span class="s1">'Pokemon'</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="s1">'.png'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># make dataframe from pokemon_data</span>
+<span class="n">pokemon_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pokemon_data</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -8012,12 +7975,22 @@ got data for spearow
 <thead>
 <tr style="text-align: right;">
 <th></th>
-<th>pokemon</th>
-<th>generation</th>
-<th>color</th>
-<th>shape</th>
-<th>evolves_to</th>
-<th>sprites</th>
+<th>Pokemon</th>
+<th>Generation</th>
+<th>Color</th>
+<th>Shape</th>
+<th>Evolves To</th>
+<th>Height</th>
+<th>Weight</th>
+<th>Sprites</th>
+<th>Type 1</th>
+<th>Type 2</th>
+<th>HP</th>
+<th>Attack</th>
+<th>Defense</th>
+<th>Special Attack</th>
+<th>Special Defense</th>
+<th>Speed</th>
 </tr>
 </thead>
 <tbody>
@@ -8028,7 +8001,17 @@ got data for spearow
 <td>green</td>
 <td>quadruped</td>
 <td>ivysaur</td>
+<td>7</td>
+<td>69</td>
 <td>https://raw.githubusercontent.com/PokeAPI/spri...</td>
+<td>grass</td>
+<td>poison</td>
+<td>45</td>
+<td>49</td>
+<td>49</td>
+<td>65</td>
+<td>65</td>
+<td>45</td>
 </tr>
 <tr>
 <th>1</th>
@@ -8037,7 +8020,17 @@ got data for spearow
 <td>red</td>
 <td>upright</td>
 <td>charmeleon</td>
+<td>6</td>
+<td>85</td>
 <td>https://raw.githubusercontent.com/PokeAPI/spri...</td>
+<td>fire</td>
+<td>None</td>
+<td>39</td>
+<td>52</td>
+<td>43</td>
+<td>60</td>
+<td>50</td>
+<td>65</td>
 </tr>
 <tr>
 <th>2</th>
@@ -8046,7 +8039,17 @@ got data for spearow
 <td>blue</td>
 <td>upright</td>
 <td>wartortle</td>
+<td>5</td>
+<td>90</td>
 <td>https://raw.githubusercontent.com/PokeAPI/spri...</td>
+<td>water</td>
+<td>None</td>
+<td>44</td>
+<td>48</td>
+<td>65</td>
+<td>50</td>
+<td>64</td>
+<td>43</td>
 </tr>
 <tr>
 <th>3</th>
@@ -8055,7 +8058,17 @@ got data for spearow
 <td>green</td>
 <td>armor</td>
 <td>metapod</td>
+<td>3</td>
+<td>29</td>
 <td>https://raw.githubusercontent.com/PokeAPI/spri...</td>
+<td>bug</td>
+<td>None</td>
+<td>45</td>
+<td>30</td>
+<td>35</td>
+<td>20</td>
+<td>20</td>
+<td>45</td>
 </tr>
 <tr>
 <th>4</th>
@@ -8064,7 +8077,17 @@ got data for spearow
 <td>brown</td>
 <td>armor</td>
 <td>kakuna</td>
+<td>3</td>
+<td>32</td>
 <td>https://raw.githubusercontent.com/PokeAPI/spri...</td>
+<td>bug</td>
+<td>poison</td>
+<td>40</td>
+<td>35</td>
+<td>30</td>
+<td>20</td>
+<td>20</td>
+<td>50</td>
 </tr>
 <tr>
 <th>5</th>
@@ -8073,7 +8096,17 @@ got data for spearow
 <td>brown</td>
 <td>wings</td>
 <td>pidgeotto</td>
+<td>3</td>
+<td>18</td>
 <td>https://raw.githubusercontent.com/PokeAPI/spri...</td>
+<td>normal</td>
+<td>flying</td>
+<td>40</td>
+<td>45</td>
+<td>40</td>
+<td>35</td>
+<td>35</td>
+<td>56</td>
 </tr>
 <tr>
 <th>6</th>
@@ -8082,7 +8115,17 @@ got data for spearow
 <td>purple</td>
 <td>quadruped</td>
 <td>raticate</td>
+<td>3</td>
+<td>35</td>
 <td>https://raw.githubusercontent.com/PokeAPI/spri...</td>
+<td>normal</td>
+<td>None</td>
+<td>30</td>
+<td>56</td>
+<td>35</td>
+<td>25</td>
+<td>35</td>
+<td>72</td>
 </tr>
 <tr>
 <th>7</th>
@@ -8091,7 +8134,17 @@ got data for spearow
 <td>brown</td>
 <td>wings</td>
 <td>fearow</td>
+<td>3</td>
+<td>20</td>
 <td>https://raw.githubusercontent.com/PokeAPI/spri...</td>
+<td>normal</td>
+<td>flying</td>
+<td>40</td>
+<td>60</td>
+<td>30</td>
+<td>31</td>
+<td>31</td>
+<td>70</td>
 </tr>
 </tbody>
 </table>
@@ -8108,42 +8161,12 @@ got data for spearow
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">pokemon_df</span><span class="p">[</span><span class="s1">'sprites'</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[ ]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png'</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># play level up sound</span>
 
-<span class="c1"># save images to file</span>
-<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">pokemon_df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Pokemon: </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">'pokemon'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Sprite: </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">'sprites'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-    <span class="c1"># save image to file</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">'sprites'</span><span class="p">])</span>
-    <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">))</span>
-    <span class="n">img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">'pokemon'</span><span class="p">]</span><span class="si">}</span><span class="s2">.png"</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">play_level_up</span><span class="p">():</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">Audio</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s1">'assets/level_up.mp3'</span><span class="p">,</span> <span class="n">autoplay</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+    
+<span class="n">play_level_up</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -8155,36 +8178,12 @@ got data for spearow
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Pokemon: bulbasaur
-Sprite: https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png
-Pokemon: charmander
-Sprite: https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png
-Pokemon: squirtle
-Sprite: https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png
-Pokemon: caterpie
-Sprite: https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10.png
-Pokemon: weedle
-Sprite: https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/13.png
-Pokemon: pidgey
-Sprite: https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/16.png
-Pokemon: rattata
-Sprite: https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/19.png
-Pokemon: spearow
-Sprite: https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/21.png
-</pre>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
+<audio autoplay="autoplay" controls="controls">
+<source src="assets/level_up.mp3" type="audio/mpeg"/>
+                    Your browser does not support the audio element.
+                </audio>
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><img alt="bulbasaur" src="bulbasaur.png"/> <img alt="squirtle" src="squirtle.png"/> <img alt="charmander" src="charmander.png"/></p>
 </div>
 </div>
 </div>

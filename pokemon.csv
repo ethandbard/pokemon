@@ -1,0 +1,9 @@
+Pokemon,Generation,Color,Shape,Evolves To,Height,Weight,Sprites,Type 1,Type 2,HP,Attack,Defense,Special Attack,Special Defense,Speed
+bulbasaur,generation-i,green,quadruped,ivysaur,7,69,https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png,grass,poison,45,49,49,65,65,45
+charmander,generation-i,red,upright,charmeleon,6,85,https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png,fire,None,39,52,43,60,50,65
+squirtle,generation-i,blue,upright,wartortle,5,90,https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png,water,None,44,48,65,50,64,43
+caterpie,generation-i,green,armor,metapod,3,29,https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10.png,bug,None,45,30,35,20,20,45
+weedle,generation-i,brown,armor,kakuna,3,32,https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/13.png,bug,poison,40,35,30,20,20,50
+pidgey,generation-i,brown,wings,pidgeotto,3,18,https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/16.png,normal,flying,40,45,40,35,35,56
+rattata,generation-i,purple,quadruped,raticate,3,35,https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/19.png,normal,None,30,56,35,25,35,72
+spearow,generation-i,brown,wings,fearow,3,20,https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/21.png,normal,flying,40,60,30,31,31,70
