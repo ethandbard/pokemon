@@ -1,5 +1,5 @@
 import dash
-from dash import Dash, dcc, html, Input, Output
+from dash import Dash, dcc, html, Input, Output, dash_table
 import pokebase as pb
 import pandas as pd
 import numpy as np
@@ -58,14 +58,42 @@ app.layout = html.Div(children=[
     # large image
     html.Img(id='large-image', style={'width': '25%', 'display': 'block', 'margin': 'auto', 'border': '2px solid black', 'marginTop': '20px'}), 
     
-    # show evolves to
-    html.Div(id='evolves-to', style={'width': '25%', 'margin': 'auto', 'border': '2px solid black', 'padding': '10px', 'marginTop': '20px'}),
+    # facts table
+    dash_table.DataTable(
+        id='facts-table',
+        columns=[{'name': col, 'id': col} for col in pokemon.columns[:7]],
+        style_table={'width': '50%', 'margin': 'auto', 'marginTop': '20px'},
+        style_cell={'textAlign': 'center'},
+        style_header={'fontWeight': 'bold'}
+    ),
+    
+    # types
+    dash_table.DataTable(
+        id='type-table',
+        columns=[{'name': col, 'id': col} for col in pokemon.columns[8:10]],
+        style_table={'width': '50%', 'margin': 'auto', 'marginTop': '20px'},
+        style_cell={'textAlign': 'center'},
+        style_header={'fontWeight': 'bold'}
+    ),
+    
+    # stats
+    dash_table.DataTable(
+        id='stats-table',
+        columns=[{'name': col, 'id': col} for col in pokemon.columns[10:16]],
+        style_table={'width': '50%', 'margin': 'auto', 'marginTop': '20px'},
+        style_cell={'textAlign': 'center'},
+        style_header={'fontWeight': 'bold'}
+    ),
+    
+    
+    # footer line
+    html.Hr(),
     
     # footer
     html.Div([
         html.A('Code on Github', href='https://github.com/ethandbard/pokemon')
     ]   
-)]
+)], style={'textAlign': 'center'}
     )
 
 
@@ -91,19 +119,34 @@ def update_large_image(selected_value):
         return dash.get_asset_url(f'{selected_value}.png')
 
 
-# update description based on dropdown value
+# update facts table based on dropdown value
 @app.callback(
-    Output(component_id='evolves-to', component_property='children'),
+    Output(component_id='facts-table', component_property='data'),
     [Input(component_id='dropdown', component_property='value')],
 )
-def update_evolves_to(selected_value):
+def update_facts_table(selected_value):
     if selected_value is not None:
-        # return evolves_to for that pokemon if not 'None'
-        if pokemon[pokemon['Pokemon'] == selected_value]['Evolves To'].values[0] == 'None':
-            return f"{selected_value} does not evolve."
-        else:
-            return f"Evolves to: {pokemon[pokemon['Pokemon'] == selected_value]['Evolves To'].values[0]}"
+        return pokemon[pokemon['Pokemon'] == selected_value].to_dict('records')
+          
 
+# update type table based on dropdown value
+@app.callback(
+    Output(component_id='type-table', component_property='data'),
+    [Input(component_id='dropdown', component_property='value')],
+)
+def update_type_table(selected_value):
+    if selected_value is not None:
+        return pokemon[pokemon['Pokemon'] == selected_value][['Type 1', 'Type 2']].to_dict('records')
+    
+# update stats table based on dropdown value
+@app.callback(
+    Output(component_id='stats-table', component_property='data'),
+    [Input(component_id='dropdown', component_property='value')],
+)
+def update_stats_table(selected_value):
+    if selected_value is not None:
+        return pokemon[pokemon['Pokemon'] == selected_value][['HP', 'Attack', 'Defense', 'Special Attack', 'Special Defense', 'Speed']].to_dict('records')
+    
 
 if __name__ == '__main__':
     app.run_server(debug=True, port=8050)
